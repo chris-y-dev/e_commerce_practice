@@ -1,0 +1,22 @@
+.card{
+    min-height: 350px;
+    height: 100%;
+    max-width: 330px;
+}
+
+.cardMedia{
+    height: 50%;
+    width:100%;
+}
+
+.cardTitle{
+    /* float: left; */
+    width: 80%;
+    display: inline-block
+}
+
+.cardPrice{
+    width: 20%;
+    display: inline-block
+    /* float: right; */
+}
