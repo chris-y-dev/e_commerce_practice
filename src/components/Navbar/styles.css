@@ -1,0 +1,17 @@
+.navbar{
+    max-height: 64px;
+}
+
+.navbarFill{
+    width: 70%;
+}
+
+.navbarBrand{
+    min-width:25%;
+    white-space: nowrap;
+}
+
+.navbarLogo{
+    vertical-align: middle;
+    margin: 10px 10px 10px 0;
+}

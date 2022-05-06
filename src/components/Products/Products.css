@@ -1,0 +1,19 @@
+body{
+    margin:0;
+    /* padding: 100px; */
+}
+
+.toolbarMargin{
+    height:  80px;
+}
+
+.productsContent{
+background-color: rgb(233, 233, 233);
+padding-left: 15px;
+padding-right: 15px;
+}
+
+.gridItem{
+    padding: 59px;
+}
+

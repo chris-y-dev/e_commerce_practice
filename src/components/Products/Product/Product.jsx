@@ -4,24 +4,25 @@ import { AddShoppingCart } from '@material-ui/icons';
 
 import './Product.css';
 
-function Product({product}) {
-    console.log(product)
+function Product({product, handleAddToCart}) {
+
+
   return (
       <Card className='card'>
-            <CardMedia image={product.image} title={product.name} className='cardMedia' />
+            <CardMedia image={product.image.url} title={product.name} className='cardMedia' />
           <CardContent>
             <div>
                 <Typography variant="h5" gutterBottom  className='cardTitle'>
                     {product.name}
                 </Typography>
-                <Typography variant="h5" className='cardPrice'>
-                    {product.price}
+                <Typography variant="h6" className='cardPrice'>
+                    {product.price.formatted_with_symbol}
                 </Typography>
             </div>
-            <Typography variant="body2">{product.description}</Typography>
+            <Typography variant="body2" dangerouslySetInnerHTML={{__html: product.description}}></Typography>
           </CardContent>
           <CardActions disableSpacing>
-              <IconButton aria-label='Add to cart'>
+              <IconButton aria-label='Add to cart' onClick={()=>handleAddToCart(product.id, 1)} >
                   <AddShoppingCart />
               </IconButton>
           </CardActions>

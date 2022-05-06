@@ -2,6 +2,7 @@
     min-height: 350px;
     height: 100%;
     max-width: 330px;
+    margin: auto;
 }
 
 .cardMedia{
@@ -10,13 +11,12 @@
 }
 
 .cardTitle{
-    /* float: left; */
-    width: 80%;
+    width: 73%;
     display: inline-block
 }
 
 .cardPrice{
-    width: 20%;
-    display: inline-block
-    /* float: right; */
+    width: 27%;
+    display: inline-block;
+    text-align: right;
 }
