@@ -1,0 +1,26 @@
+.card{
+    min-height: 250px;
+    height: 100%;
+    max-width: 330px;
+    margin: auto;
+}
+
+.cardMedia{
+    height: 180px;
+    width:100%;
+}
+
+.buttons{
+    display: flex;
+    align-items: center;
+    white-space:  nowrap ;
+}
+
+.cardTitle{
+    white-space: nowrap;
+}
+
+.cardActions{
+    display: flex;
+    justify-content: space-around;
+}

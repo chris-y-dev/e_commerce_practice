@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Typography, Button, Grid } from '@material-ui/core';
+import CartItem from './CartItem/CartItem'
 import './Cart.css';
 
 function Cart({ cart }) {
@@ -11,19 +12,19 @@ function Cart({ cart }) {
     //function to render if NOT empty
     function FilledCart(){
         return <>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} className='cartGrid'>
             {cart.line_items.map((item)=>{
                 return <Grid item xs={12} sm={4} key={item.id}>
                     <div>
-                        Name: {item.name}, Quantity: {item.quantity}
+                        <CartItem item={item}/>
                     </div>
                 </Grid>
             })}
             </Grid>
             <div>
-                <Typography variant='h4'>
+                <Typography variant='h4' className="cartBottom">
                     Subtotal: {cart.subtotal.formatted_with_symbol}
-                    <div>
+                    <div className='cartButtons'>
                         <Button size='large' type='button' variant='contained' color="secondary">Empty Cart</Button>
                         <Button size='large' type='button' variant='contained' color="primary">Check Out</Button>
                     </div>
@@ -32,12 +33,13 @@ function Cart({ cart }) {
         </>
     }
 
-    if (!cart.line_items) return 'Loading...'
+
+    if (!cart.line_items) return 'Loading...';
 
   return (
     <Container>
         <div className='toolbarMargin'/>
-        <Typography variant='h3'>Your Shopping Cart</Typography>
+        <Typography variant='h4' gutterBottom>Your Shopping Cart</Typography>
         {!cart.line_items.length? <EmptyCart /> : <FilledCart />}
     </Container>
   )
