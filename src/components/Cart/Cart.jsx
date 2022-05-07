@@ -1,13 +1,16 @@
 import React from 'react'
 import { Container, Typography, Button, Grid } from '@material-ui/core';
-import CartItem from './CartItem/CartItem'
+import CartItem from './CartItem/CartItem';
+import { Link } from 'react-router-dom'
 import './Cart.css';
 
 function Cart({ cart }) {
 
     //function to render JSX if empty
     function EmptyCart(){
-        return <Typography variant="subtitle1">You have no items in your shopping cart. Start adding some!</Typography>
+        return <Typography variant="subtitle1">You have no items in your shopping cart. 
+        <Link to='/' className='link'>Start adding some!</Link>
+        </Typography>
     }
     //function to render if NOT empty
     function FilledCart(){

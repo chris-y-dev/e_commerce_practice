@@ -9,6 +9,7 @@
 .navbarBrand{
     min-width:25%;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .navbarLogo{

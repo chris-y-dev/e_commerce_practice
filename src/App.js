@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { commerce } from './lib/commerce'
-import {Products, Navbar, Cart} from './components'
+import { commerce } from './lib/commerce';
+import {Products, Navbar, Cart} from './components';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
 
@@ -34,11 +35,18 @@ function App() {
   console.log(cart); //show cart object. Includes list of items, subtotal, dates...etc
 
   return (
-    <div>
-        <Navbar numOfItems={cart.total_items}/>
-        <Cart cart={cart} />
-        {/* <Products products={products} handleAddToCart={handleAddToCart}/> */}
-    </div>
+    <Router>
+
+      <div>
+          <Navbar numOfItems={cart.total_items}/>
+          <Routes>
+            <Route path="/" element={
+              <Products products={products} handleAddToCart={handleAddToCart} />}
+              />
+            <Route path="/cart" element={ <Cart cart={cart} />} />
+          </Routes>
+      </div>
+    </Router>
   )
 }
 
