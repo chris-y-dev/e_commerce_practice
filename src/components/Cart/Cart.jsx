@@ -4,7 +4,7 @@ import CartItem from './CartItem/CartItem';
 import { Link } from 'react-router-dom'
 import './Cart.css';
 
-function Cart({ cart }) {
+function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart }) {
 
     //function to render JSX if empty
     function EmptyCart(){
@@ -19,7 +19,9 @@ function Cart({ cart }) {
             {cart.line_items.map((item)=>{
                 return <Grid item xs={12} sm={4} key={item.id}>
                     <div>
-                        <CartItem item={item}/>
+                        <CartItem item={item} 
+                            onUpdateCartQty={handleUpdateCartQty}
+                            onRemoveFromCart={handleRemoveFromCart}/>
                     </div>
                 </Grid>
             })}
@@ -28,7 +30,7 @@ function Cart({ cart }) {
                 <Typography variant='h4' className="cartBottom">
                     Subtotal: {cart.subtotal.formatted_with_symbol}
                     <div className='cartButtons'>
-                        <Button size='large' type='button' variant='contained' color="secondary">Empty Cart</Button>
+                        <Button size='large' type='button' variant='contained' color="secondary" onClick={handleEmptyCart}>Empty Cart</Button>
                         <Button size='large' type='button' variant='contained' color="primary">Check Out</Button>
                     </div>
                 </Typography>

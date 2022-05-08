@@ -3,7 +3,11 @@ import { Typography, Button, Card, CardActions, CardContent, CardMedia } from '@
 import './CartItem.css'
 
 
-function CartItem({ item }) {
+function CartItem({ item, onUpdateCartQty, onRemoveFromCart }) {
+
+
+
+
   return (
     <Card className='card'>
         <CardMedia image={item.image.url} alt={item.name} className="cardMedia"/>
@@ -13,11 +17,11 @@ function CartItem({ item }) {
         </CardContent>
         <CardActions  className="cardActions">
             <div className='buttons'>
-                <Button type='button' size='small'>-</Button>
+                <Button type='button' size='small' onClick={()=> onUpdateCartQty(item.id, item.quantity-1)}>-</Button>
                 <Typography>{item.quantity}</Typography>
-                <Button type='button' size='small'>+</Button>
+                <Button type='button' size='small' onClick={()=> onUpdateCartQty(item.id, item.quantity+1)}>+</Button>
             </div>
-            <Button variant='contained' type='button' color='secondary'>Remove</Button>            
+            <Button variant='contained' type='button' color='secondary' onClick={()=>{onRemoveFromCart(item.id)}}>Remove</Button>            
         </CardActions>
     </Card>
   )
