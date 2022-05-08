@@ -31,7 +31,7 @@ function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
                     Subtotal: {cart.subtotal.formatted_with_symbol}
                     <div className='cartButtons'>
                         <Button size='large' type='button' variant='contained' color="secondary" onClick={handleEmptyCart}>Empty Cart</Button>
-                        <Button size='large' type='button' variant='contained' color="primary">Check Out</Button>
+                        <Button size='large' type='button' variant='contained' color="primary" component={Link} to="/checkout">Check Out</Button>
                     </div>
                 </Typography>
             </div>
