@@ -10,8 +10,8 @@ function Product({product, handleAddToCart}) {
   return (
       <Card className='card'>
             <CardMedia image={product.image.url} title={product.name} className='cardMedia' />
-          <CardContent>
-            <div>
+          <CardContent className='cardContent'>
+            <div class="cardTitlePrice">
                 <Typography variant="h5" gutterBottom  className='cardTitle'>
                     {product.name}
                 </Typography>
@@ -22,7 +22,7 @@ function Product({product, handleAddToCart}) {
             <Typography variant="body2" dangerouslySetInnerHTML={{__html: product.description}}></Typography>
           </CardContent>
           <CardActions disableSpacing>
-              <IconButton aria-label='Add to cart' onClick={()=>handleAddToCart(product.id, 1)} >
+              <IconButton aria-label='Add to cart' onClick={()=>handleAddToCart(product, 1)} >
                   <AddShoppingCart />
               </IconButton>
           </CardActions>

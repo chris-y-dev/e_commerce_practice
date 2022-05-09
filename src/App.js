@@ -8,6 +8,8 @@ function App() {
 
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
+  const [order, setOrder] = useState({});
+  const [errorMsg, setErrorMsg] = useState('')
 
   //function that fetches Product data
   const fetchProducts = async ()=> {
@@ -21,8 +23,10 @@ function App() {
   }
 
   //call on click. Add item to cart
-  const handleAddToCart = async (productId, quantity)=>{
-    const response = await commerce.cart.add(productId, quantity)
+  const handleAddToCart = async (product, quantity)=>{
+    console.log(product)
+
+    const response = await commerce.cart.add(product.id, quantity)
 
     console.log('added')
     console.log(response)
@@ -52,6 +56,26 @@ function App() {
     setCart(response.cart);
   }
 
+  //funciton to remove all items after capturing order
+  const refreshCart = async()=>{
+    const newCart = await commerce.cart.refresh();
+
+    setCart(newCart);
+  }
+
+  //final function call for fulfillment
+  const handleCaptureCheckout = async (checkoutTokenId, newOrder)=>{
+    try{
+      const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
+      //capture then reset cart
+      setOrder(incomingOrder);
+      console.log(incomingOrder)
+      refreshCart();
+    } catch(error){
+      setErrorMsg(error.data.error.message)
+    }
+  }
+
   //when load, fetch Products and set state
   useEffect(()=>{
     fetchProducts(); 
@@ -79,7 +103,14 @@ function App() {
                 handleRemoveFromCart={handleRemoveFromCart}
                 handleEmptyCart={handleEmptyCart}
                 />} />
-            <Route path='/checkout' element={<Checkout cart={cart}/>} />
+            <Route path='/checkout' 
+              element={<Checkout 
+                cart={cart} 
+                order={order}
+                handleCaptureCheckout={handleCaptureCheckout}
+                error={errorMsg}
+                refreshCart={refreshCart}
+                />} />
           </Routes>
       </div>
     </Router>

@@ -17,8 +17,8 @@ function Navbar({numOfItems}) {
         <AppBar position="fixed" color="inherit" className="navbar">
             <Toolbar>
                 <Typography variant="h6" color="inherit" className="navbarBrand" component={Link} to="/">
-                    <img src={logo} alt='E_commerce_practice' height="25px" className="navbarLogo" />
-                    E-Commerce_Practice
+                    <img src={logo} alt='E-commerce practice' height="25px" className="navbarLogo" />
+                    E-Commerce Practice
                 </Typography>
                 <div className="navbarFill" />
                 {location.pathname === '/'? 

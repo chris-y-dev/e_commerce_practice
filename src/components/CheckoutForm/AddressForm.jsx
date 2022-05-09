@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { InputLabel, Select, MenuItem, Button, Grid, Typography } from '@material-ui/core';
+import { InputLabel, Select, MenuItem, Button, Grid, Typography, CircularProgress } from '@material-ui/core';
 import { useForm, FormProvider } from 'react-hook-form';
 import FormInput from './FormInput';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import './Checkout/Checkout.css'
 
-import { commerce } from '../../lib/commerce'
-import { NextWeek } from '@material-ui/icons';
+import { commerce } from '../../lib/commerce';
 
 function AddressForm({ checkoutToken, next }) {
     const methods = useForm();
@@ -94,11 +94,15 @@ function AddressForm({ checkoutToken, next }) {
 
     //Destructure different form methods inside FormProvider
     //We want to use Material UI form inputs (aeshtetics and formatting). To combine Mat-UI and ReactHookForm -> Need to create ANOTHER component (CustomTextField)
-    return (
+    return !shippingCountry? (
+        <div className='spinner'>
+            <CircularProgress />
+        </div>
+    ) : (
         <>
             <Typography variant='h6' gutterBottom>Shipping Address</Typography>
             <FormProvider {...methods}>
-                <form onSubmit={methods.handleSubmit((data)=> ({...data, shippingCountry, shippingSubdivision, shippingOption}))}>
+                <form onSubmit={methods.handleSubmit((data)=> next({...data, shippingCountry, shippingSubdivision, shippingOption}))}>
                     <Grid container spacing={3}>
                         <FormInput name='firstName' label='First name' />
                         <FormInput name='lastName' label='Last name' />

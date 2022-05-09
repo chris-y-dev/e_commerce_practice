@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Typography, Button, Grid } from '@material-ui/core';
+import { Container, Typography, Button, Grid, CssBaseline } from '@material-ui/core';
 import CartItem from './CartItem/CartItem';
 import { Link } from 'react-router-dom'
 import './Cart.css';
@@ -9,7 +9,7 @@ function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
     //function to render JSX if empty
     function EmptyCart(){
         return <Typography variant="subtitle1">You have no items in your shopping cart. 
-        <Link to='/' className='link'>Start adding some!</Link>
+         <Link to='/' className='link'> Start adding some!</Link>
         </Typography>
     }
     //function to render if NOT empty
@@ -21,7 +21,7 @@ function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
                     <div>
                         <CartItem item={item} 
                             onUpdateCartQty={handleUpdateCartQty}
-                            onRemoveFromCart={handleRemoveFromCart}/>
+                            onRemoveFromCart={handleRemoveFromCart} className='cartItem'/>
                     </div>
                 </Grid>
             })}
@@ -43,6 +43,7 @@ function Cart({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
 
   return (
     <Container>
+    <CssBaseline />
         <div className='toolbarMargin'/>
         <Typography variant='h4' gutterBottom>Your Shopping Cart</Typography>
         {!cart.line_items.length? <EmptyCart /> : <FilledCart />}

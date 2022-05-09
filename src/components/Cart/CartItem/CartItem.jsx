@@ -12,8 +12,10 @@ function CartItem({ item, onUpdateCartQty, onRemoveFromCart }) {
     <Card className='card'>
         <CardMedia image={item.image.url} alt={item.name} className="cardMedia"/>
         <CardContent className='cardContent'>
-            <Typography variant='h5' className="cardTitle">{item.name}</Typography>
+            <div class="cardTitlePriceCart">
+            <Typography variant='h5'>{item.name}</Typography>
             <Typography variant='h6'>{item.price.formatted_with_symbol}</Typography>
+            </div>
         </CardContent>
         <CardActions  className="cardActions">
             <div className='buttons'>

@@ -1,23 +1,16 @@
-.card{
-    min-height: 350px;
-    height: 100%;
-    max-height: 350px;
-    max-width: 330px;
-    margin: auto;
+
+
+
+.cardTitlePrice{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px !important;
 }
 
-.cardMedia{
-    height: 50%;
-    width:100%;
+.cardContent{
+    padding-bottom: 0 !important;
 }
 
-.cardTitle{
-    width: 73%;
-    display: inline-block
-}
-
-.cardPrice{
-    width: 27%;
-    display: inline-block;
-    text-align: right;
+.cardContent p {
+    margin-bottom: 0;
 }
